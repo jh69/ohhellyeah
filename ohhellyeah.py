@@ -11,18 +11,22 @@ words = [
 ]
 
 
+def r(rnd=100):
+    return randint(0, rnd)
+
+
 def createword(worddict):
-    if randint(0, 100) > worddict["probability"]:
+    if r() > worddict["probability"]:
         return ""
     returnthis = ""
     for char in worddict["characters"]:
         if len(char[0]) > 1:
-            if randint(0, 100) < char[1]:
+            if r() < char[1]:
                 returnthis += char[0]
         else:
             if char[1] > 89:
                 returnthis += char[0]
-            while randint(0, 100) < char[1]:
+            while r() < char[1]:
                 returnthis += char[0]
     return returnthis
 
@@ -37,12 +41,12 @@ def ohhellyeahbaby(wordsdict):
         result = result.replace("  ", " ")
 
     punctuation = "."
-    if randint(0, 100) < 75:
+    if r() < 75:
         punctuation = "!"
-        while randint(0, 100) < 90:
+        while r() < 90:
             result += punctuation
 
-    if randint(0, 100) < 50:
+    if r() < 50:
         result = result.upper()
     return result
 
