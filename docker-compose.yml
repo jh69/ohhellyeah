@@ -1,0 +1,16 @@
+version: "2.4"
+
+services:
+  ohhellyeah:
+    image: python:3.8-alpine
+    container_name: ohhellyeah
+    tty:
+      true
+    restart:
+      unless-stopped
+    volumes:
+        - ./:/code
+    logging:
+      options:
+        max-size: "100m"
+    command: "python code/ohhellyeah.py"
